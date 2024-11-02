@@ -47,10 +47,13 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+val laranja = 0xFFFFA62B
+val azul = 0xFFFF16697A
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Inicio() {
+
 
     val navController = rememberNavController()
 
@@ -113,14 +116,14 @@ fun Login(navController: NavController, innerPadding: PaddingValues) {
 
             onClick = { navController.navigate("enter") },
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFFFFA62B),
+                containerColor = Color(laranja),
                 contentColor = Color.White
             ),
         ) {
             Text(
                 text = "Login",
                 fontSize = 40.sp,
-                color = Color(0xFFFF16697A))
+                color = Color(azul))
         }
 
         Button(
@@ -132,7 +135,7 @@ fun Login(navController: NavController, innerPadding: PaddingValues) {
 
             onClick = { navController.navigate("cadastro") },
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFFFFA62B),
+                containerColor = Color(laranja),
                 contentColor = Color.White
             ),
 
@@ -141,7 +144,7 @@ fun Login(navController: NavController, innerPadding: PaddingValues) {
 
                 text = "Cadastrar",
                 fontSize = 40.sp,
-                color = Color(0xFFFF16697A))
+                color = Color(azul))
         }
 
         }
