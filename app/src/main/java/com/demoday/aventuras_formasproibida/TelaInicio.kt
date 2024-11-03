@@ -1,7 +1,6 @@
 package com.demoday.aventuras_formasproibida
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,11 +14,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,11 +23,11 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.demoday.aventuras_formasproibida.ui.theme.Aventuras_FormasProibidaTheme
 
@@ -71,7 +67,7 @@ fun TelaInicio(navController: NavController) {
                 .height(87.dp),
             colors = ButtonDefaults
                 .buttonColors(containerColor = Color(0x45FF16697A)),
-            onClick = {}
+            onClick = {navController.navigate("circulo")}
         ) {
             Row(
                 modifier = Modifier
@@ -107,7 +103,7 @@ fun TelaInicio(navController: NavController) {
                     .height(87.dp),
                 colors = ButtonDefaults
                     .buttonColors(containerColor = Color(0x45FF16697A)),
-                onClick = {}
+                onClick = {navController.navigate("quadrado")}
             ) {
                 Row(
                     modifier = Modifier
@@ -143,7 +139,7 @@ fun TelaInicio(navController: NavController) {
                     .height(87.dp),
                 colors = ButtonDefaults
                     .buttonColors(containerColor = Color(0x45FF16697A)),
-                onClick = {}
+                onClick = {navController.navigate("retangulo")}
             ) {
                 Row(
                     modifier = Modifier
@@ -179,7 +175,7 @@ fun TelaInicio(navController: NavController) {
                     .height(87.dp),
                 colors = ButtonDefaults
                     .buttonColors(containerColor = Color(0x45FF16697A)),
-                onClick = {}
+                onClick = {navController.navigate("triangulo")}
             ) {
                 Row(
                     modifier = Modifier
@@ -215,7 +211,7 @@ fun TelaInicio(navController: NavController) {
                     .height(87.dp),
                 colors = ButtonDefaults
                     .buttonColors(containerColor = Color(0x45FF16697A)),
-                onClick = {}
+                onClick = {navController.navigate("losango")}
             ) {
                 Row(
                     modifier = Modifier
@@ -251,7 +247,7 @@ fun TelaInicio(navController: NavController) {
                     .height(87.dp),
                 colors = ButtonDefaults
                     .buttonColors(containerColor = Color(0x45FF16697A)),
-                onClick = {}
+                onClick = {navController.navigate("trapezio")}
             ) {
                 Row(
                     modifier = Modifier
@@ -287,7 +283,7 @@ fun TelaInicio(navController: NavController) {
                     .height(87.dp),
                 colors = ButtonDefaults
                     .buttonColors(containerColor = Color(0x45FF16697A)),
-                onClick = {}
+                onClick = {navController.navigate("paralelogramo")}
             ) {
                 Row(
                     modifier = Modifier
@@ -313,6 +309,37 @@ fun TelaInicio(navController: NavController) {
 
 
 }}
+
+@Composable
+fun Circulo(navController: NavHostController) {
+    Text("Fio")
+}
+@Composable
+fun Quadrado(navController: NavHostController) {
+    Text("Fio")
+}
+@Composable
+fun Retangulo(navController: NavHostController) {
+    Text("Fio")
+}
+@Composable
+fun Triangulo(navController: NavHostController) {
+    Text("Fio")
+}
+@Composable
+fun Losango(navController: NavHostController) {
+    Text("Fio")
+}
+@Composable
+fun Trapezio(navController: NavHostController) {
+    Text("Fio")
+}
+@Composable
+fun Paralelogramo(navController: NavHostController) {
+    Text("Fio")
+}
+
+
 
 @Preview
 @Composable
