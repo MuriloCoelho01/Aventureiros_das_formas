@@ -73,6 +73,8 @@ fun Inicio() {
                     composable("enter") { Entrar(navController) }
                     composable("home") { TelaInicio(navController) }
                     composable("circulo") { Circulo(navController) }
+                    composable("quadrado") { Quadrado(navController) }
+                    composable("retangulo") { Retangulo(navController) }
 
 
 

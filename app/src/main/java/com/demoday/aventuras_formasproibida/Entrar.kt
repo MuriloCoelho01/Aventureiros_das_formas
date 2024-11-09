@@ -3,24 +3,35 @@ package com.demoday.aventuras_formasproibida
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -29,9 +40,15 @@ import androidx.navigation.compose.rememberNavController
 import com.demoday.aventuras_formasproibida.ui.theme.Aventuras_FormasProibidaTheme
 
 
-var nome ="Murilo Coelho"
+var nome = "Murilo Coelho"
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Entrar(navController:NavController) {
+fun Entrar(navController: NavController) {
+
+    var email by remember { mutableStateOf("") }
+    var senha by remember { mutableStateOf("") }
+
     Column(
         modifier = Modifier
             .paint(
@@ -57,47 +74,44 @@ fun Entrar(navController:NavController) {
 
         Column(
             modifier = Modifier
-                .padding(top = 146.dp)
+                .padding(top = 140.dp)
         ) {
-            Text(
-                text = "E-mail/usuário:",
-                fontSize = 20.sp,
-                color = Color(0xFFFFD2B977)
-            )
-            TextField(
+            OutlinedTextField(
+                value = email, // Usa o estado para o valor
+                onValueChange = { newText -> email = newText }, // Atualiza o estado
                 modifier = Modifier
-                    .padding()
-                    .height(31.dp)
-                    .width(342.dp), shape = RoundedCornerShape(25.dp),
-                value = "", onValueChange = { nome},
-                colors = TextFieldDefaults.colors(
-                    unfocusedContainerColor = Color(0xFFFD2B977)
+                    .height(56.dp)
+                    .width(342.dp),
+                shape = RoundedCornerShape(12.dp),
+                colors = TextFieldDefaults.textFieldColors(
+                    containerColor = Color(0xFFFD2B977)
                 )
             )
-        }
-        Column(
-            modifier = Modifier
-                .padding(top = 63.dp)
-        ) {
-            Text(
-                text = "Senha:",
-                fontSize = 20.sp,
-                color = Color(0xFFFFD2B977)
-            )
-            TextField(
-                modifier = Modifier
-                    .padding()
-                    .height(31.dp)
-                    .width(342.dp), shape = RoundedCornerShape(25.dp),
-                value = "", onValueChange = {},
-                colors = TextFieldDefaults.colors(
-                    unfocusedContainerColor = Color(0xFFFD2B977)
-                )
-            )
-        }
 
+
+            OutlinedTextField(
+                value = senha,
+                onValueChange = { newText -> senha = newText },
+                label = { Text("Senha", fontSize = 16.sp, fontWeight = FontWeight.Medium) },
+                leadingIcon = {
+                    Image(
+                        painter = painterResource(R.drawable.vector1),
+                        contentDescription = "Ícone do campo de texto",
+                        modifier = Modifier.size(20.dp)
+                    )
+                },
+                modifier = Modifier
+                    .padding(top = 12.dp)
+                    .height(56.dp)
+                    .width(342.dp),
+                shape = RoundedCornerShape(12.dp),
+                colors = TextFieldDefaults.textFieldColors(
+                    containerColor = Color(0xFFFD2B977)
+                )
+            )
+        }
         Button(
-            onClick = { navController.navigate("home")  },
+            onClick = { navController.navigate("home") },
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xFFFFA62B),
                 contentColor = Color.White
@@ -120,7 +134,7 @@ fun Entrar(navController:NavController) {
             contentDescription = ""
         )
 
-       }
+    }
 
 
 }
@@ -129,8 +143,8 @@ fun Entrar(navController:NavController) {
 @Composable
 fun Preview3() {
     Aventuras_FormasProibidaTheme {
-Entrar(rememberNavController())
+        Entrar(rememberNavController())
     }
-    
+
 }
 

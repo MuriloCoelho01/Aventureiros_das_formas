@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -35,6 +36,7 @@ import com.demoday.aventuras_formasproibida.ui.theme.Aventuras_FormasProibidaThe
 
 @Composable
 fun Cadastro(navController: NavController) {
+    var valor = ""
 
     var email = remember {
         mutableStateOf("")}
@@ -72,11 +74,9 @@ fun Cadastro(navController: NavController) {
                 fontSize = 20.sp,
                 color = Color(0xFFFFD2B977)
             )
-            TextField(
-                modifier = Modifier
-                    .width(342.dp),
-                value = email.value,
-                onValueChange = {novotexto -> email.value = novotexto},
+            OutlinedTextField(
+                value = "",
+                onValueChange = { text = it.toString()},
                 colors = TextFieldDefaults.colors(
                     unfocusedIndicatorColor = Color(0xFFFD2B977)
                 )
@@ -89,20 +89,19 @@ fun Cadastro(navController: NavController) {
                 .padding(top = 35.dp)
         ) {
             Text(
-                text = "E-mail:",
+                text = "E-mail",
                 fontSize = 20.sp,
                 color = Color(0xFFFFD2B977)
             )
-            TextField(
-                modifier = Modifier
-                    .padding()
-                    .height(31.dp)
-                    .width(342.dp), shape = RoundedCornerShape(25.dp),
-                value = "", onValueChange = {},
+            OutlinedTextField(
+                value = "",
+                onValueChange = { text = it.toString()},
                 colors = TextFieldDefaults.colors(
-                    unfocusedContainerColor = Color(0xFFFD2B977)
+                    unfocusedIndicatorColor = Color(0xFFFD2B977)
                 )
+
             )
+
         }
         Column(
             modifier = Modifier
@@ -113,16 +112,15 @@ fun Cadastro(navController: NavController) {
                 fontSize = 20.sp,
                 color = Color(0xFFFFD2B977)
             )
-            TextField(
-                modifier = Modifier
-                    .padding()
-                    .height(31.dp)
-                    .width(342.dp), shape = RoundedCornerShape(25.dp),
-                value = "", onValueChange = {},
+            OutlinedTextField(
+                value = "",
+                onValueChange = { text = it.toString()},
                 colors = TextFieldDefaults.colors(
-                    unfocusedContainerColor = Color(0xFFFD2B977)
+                    unfocusedIndicatorColor = Color(0xFFFD2B977)
                 )
+
             )
+
         }
         Column(
             modifier = Modifier
@@ -133,21 +131,15 @@ fun Cadastro(navController: NavController) {
                 fontSize = 20.sp,
                 color = Color(0xFFFFD2B977)
             )
-            TextField(
-                modifier = Modifier
-                    .padding()
-                    .height(31.dp)
-                    .width(342.dp), shape = RoundedCornerShape(25.dp),
-                value = "", onValueChange = {newText ->
-                    text = newText
-                },
-
+            OutlinedTextField(
+                value = "",
+                onValueChange = { text = it.toString()},
                 colors = TextFieldDefaults.colors(
-                    unfocusedContainerColor = Color(0xFFFD2B977),
-                    unfocusedTextColor = Color(0xFFFF000000),
-                    focusedTextColor = Color(0xFFFF000000)
+                    unfocusedIndicatorColor = Color(0xFFFD2B977)
                 )
+
             )
+
         }
 
         Column(
