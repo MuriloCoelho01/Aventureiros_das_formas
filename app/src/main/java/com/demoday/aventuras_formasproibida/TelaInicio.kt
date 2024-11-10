@@ -1,14 +1,10 @@
 package com.demoday.aventuras_formasproibida
 
-import android.icu.text.CaseMap.Title
-import android.text.style.BackgroundColorSpan
-import androidx.compose.animation.expandHorizontally
+
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -64,8 +60,6 @@ import com.demoday.aventuras_formasproibida.ui.theme.Aventuras_FormasProibidaThe
 @Composable
 fun TelaInicio(navController: NavController) {
 
-
-
     Column(
         modifier = androidx.compose.ui.Modifier
             .paint(
@@ -82,14 +76,16 @@ fun TelaInicio(navController: NavController) {
 
     }
 
+
     Column(
         modifier = Modifier
             .verticalScroll(rememberScrollState(0))
             .fillMaxHeight()
+            .padding(top = 270.dp)
     ) {
         Column(
             modifier = Modifier
-                .padding(top = 270.dp)
+                .padding(top = 0.dp)
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center

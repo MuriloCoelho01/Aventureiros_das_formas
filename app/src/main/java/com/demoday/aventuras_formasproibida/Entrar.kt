@@ -1,6 +1,7 @@
 package com.demoday.aventuras_formasproibida
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -30,8 +31,10 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -76,16 +79,31 @@ fun Entrar(navController: NavController) {
             modifier = Modifier
                 .padding(top = 140.dp)
         ) {
+
             OutlinedTextField(
-                value = email, // Usa o estado para o valor
-                onValueChange = { newText -> email = newText }, // Atualiza o estado
+                value = email,
+                onValueChange = { newText -> email = newText },
+                label = { Text("nome de usuário / email", fontSize = 16.sp, fontWeight = FontWeight.Medium) },
+                leadingIcon = {
+                    Image(
+                        painter = painterResource(R.drawable.vector),
+                        contentDescription = "Ícone do campo de texto",
+                        modifier = Modifier.size(20.dp)
+                    )
+                },
                 modifier = Modifier
+                    .padding(top = 12.dp)
                     .height(56.dp)
                     .width(342.dp),
                 shape = RoundedCornerShape(12.dp),
                 colors = TextFieldDefaults.textFieldColors(
                     containerColor = Color(0xFFFD2B977)
-                )
+                ),
+                textStyle = TextStyle(
+                    fontSize = 16.sp,
+                    textAlign = TextAlign.Start
+                ),
+                singleLine = true
             )
 
 
@@ -107,8 +125,21 @@ fun Entrar(navController: NavController) {
                 shape = RoundedCornerShape(12.dp),
                 colors = TextFieldDefaults.textFieldColors(
                     containerColor = Color(0xFFFD2B977)
-                )
+                ),
+                textStyle = TextStyle(
+                    fontSize = 16.sp,
+                    textAlign = TextAlign.Start
+                ),
+                singleLine = true
             )
+            Text("Esqueci a senha",
+                fontSize = 15.sp,
+                color = Color(0xFFFFD2B977),
+                modifier = Modifier
+                    .padding(top = 5.dp, start = 10.dp)
+                    .clickable { navController.navigate("enter") }
+            )
+
         }
         Button(
             onClick = { navController.navigate("home") },
