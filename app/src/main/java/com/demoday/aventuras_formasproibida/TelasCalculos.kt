@@ -11,9 +11,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
@@ -33,7 +37,10 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -44,10 +51,11 @@ import com.demoday.aventuras_formasproibida.ui.theme.Aventuras_FormasProibidaThe
 
 @Composable
 fun Circulo(navController: NavHostController) {
-    var rememberMe by remember { mutableStateOf(false)}
+    var rememberMe by remember { mutableStateOf(false) }
 
-        var raio by remember { mutableStateOf("") }
+    var raio by remember { mutableStateOf("") }
     var area by remember { mutableStateOf<Double?>(null) }
+    var area_circulo = "%.2f".format(area)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -69,7 +77,7 @@ fun Circulo(navController: NavHostController) {
         ) {
             Row(
                 modifier = Modifier
-                    .padding(start = 8.dp)
+                    .padding(start = 8.dp, end = 8.dp)
                     .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Start
@@ -102,15 +110,39 @@ fun Circulo(navController: NavHostController) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 275.dp)
-                .height(260.dp),
+                .padding(top = 159.dp)
+                .height(150.dp),
+            colors = CardDefaults.cardColors(containerColor = Color(0xFFFF16697A))
+
+        ) {
+            Text(
+                text = "A área do círculo é calculada com a fórmula A = π * r²," +
+                        " onde r é o raio. Multiplicamos π pelo raio ao quadrado para obter o" +
+                        " espaço ocupado pelo círculo.",
+                fontSize = 16.5.sp,
+                color = Color(0xFFFD2B977),
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 15.dp, end = 15.dp, top = 30.dp)
+            )
+
+        }
+    }
+    Column {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 325.dp)
+                .height(220.dp),
             colors = CardDefaults.cardColors(containerColor = Color(0xFFFF16697A))
 
         ) {
             Row(
-                modifier =  Modifier
-                    .padding(top = 25.dp),
+                modifier = Modifier
+                    .padding(top = 1.dp, end = 10.dp),
                 verticalAlignment = Alignment.Top
+
 
             ) {
                 Column(
@@ -123,28 +155,33 @@ fun Circulo(navController: NavHostController) {
                         painter = painterResource(R.drawable.circuloapa),
                         contentDescription = "Circulo2",
                         modifier = Modifier
-                            .size(110.dp)
+                            .size(120.dp)
                     )
                     Image(
                         painter = painterResource(R.drawable.espa_odecalculo),
-                        contentDescription = "Espaço Calculo")
-                    Text(text = "Área: $area",
-                        fontSize = 17.sp)
+                        contentDescription = "Espaço Calculo"
+                    )
+                    Text(
+                        text = "Área: $area_circulo",
+                        fontSize = 17.sp
+                    )
                 }
 
-                Column(modifier = Modifier
-                    .padding(start = 60.dp)
-                    .padding(top = 45.dp)
-                    .fillMaxWidth(),
-                    verticalArrangement = Arrangement.Center) {
-                    Text(text = "Valor do Raio:",
+                Column(
+                    modifier = Modifier
+                        .padding(start = 30.dp)
+                        .padding(top = 35.dp),
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        text = "Valor do Raio:",
                         fontSize = 20.sp,
                         color = Color(0xFFFD2B977)
                     )
                     OutlinedTextField(
                         value = raio,
-                        onValueChange = {raio = it
-                            area = if (raio.isNotEmpty()) Math.PI * raio.toDouble() * raio.toDouble() else 0.0
+                        onValueChange = {
+                            raio = it
                         },
                         colors = TextFieldDefaults.colors(
                             unfocusedContainerColor = Color(0xFFFD2B977)
@@ -153,17 +190,48 @@ fun Circulo(navController: NavHostController) {
                             keyboardType = KeyboardType.Number
                         ),
                         modifier = Modifier
-                            .padding(end = 35.dp)
-                            .fillMaxWidth()
+                            .padding(end = 20.dp)
+                            .fillMaxWidth(),
+                        textStyle = TextStyle(
+                            fontSize = 16.sp,
+                            textAlign = TextAlign.Start
+                        ),
+                        singleLine = true
 
                     )
+                    Button(
+                        onClick = {
+                            area =
+                                if (raio.isNotEmpty()) Math.PI * raio.toFloat() * raio.toFloat() else 0.0
+                        },
+                        shape = RoundedCornerShape(7.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFFFFA62B),
+                            contentColor = Color.White
+                        ),
+                        modifier = Modifier
+                            .padding(top = 15.dp, start = 15.dp)
+                            .height(45.dp)
+                            .width(148.dp)
+                            .fillMaxWidth()
+                            .align(alignment = Alignment.Start)
+                    ) {
+                        Text(
+                            text = "Confirmar",
+                            fontSize = 15.sp,
+                            fontWeight = FontWeight.Medium,
+                            color = Color(0xFFFF16697A)
+                        )
+                    }
 
 
                 }
 
             }
         }
+
     }
+
 }
 
 @Composable
@@ -171,6 +239,7 @@ fun Quadrado(navController: NavController) {
 
     var lado by remember { mutableStateOf("") }
     var area by remember { mutableStateOf<Double?>(null) }
+    var area_quadrado = "%.2f".format(area)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -192,7 +261,7 @@ fun Quadrado(navController: NavController) {
         ) {
             Row(
                 modifier = Modifier
-                    .padding(start = 8.dp)
+                    .padding(start = 8.dp, end = 8.dp)
                     .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Start
@@ -211,7 +280,7 @@ fun Quadrado(navController: NavController) {
                     modifier = Modifier.padding(20.dp)
                 )
                 Text(
-                    text = "Área do Quadrado",
+                    text = "Área do Circulo",
                     fontSize = 23.sp,
                     modifier = Modifier
                         .padding(start = 22.dp)
@@ -225,15 +294,38 @@ fun Quadrado(navController: NavController) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 275.dp)
-                .height(260.dp),
+                .padding(top = 159.dp)
+                .height(150.dp),
+            colors = CardDefaults.cardColors(containerColor = Color(0xFFFF16697A))
+
+        ) {
+            Text(
+                text = "O quadrado é uma figura com quatro lados iguais. Para calcular sua área, " +
+                        "multiplica-se o comprimento de um lado por ele mesmo: Área = lado².",
+                fontSize = 16.5.sp,
+                color = Color(0xFFFD2B977),
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 15.dp, end = 15.dp, top = 30.dp)
+            )
+
+        }
+    }
+    Column {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 325.dp)
+                .height(220.dp),
             colors = CardDefaults.cardColors(containerColor = Color(0xFFFF16697A))
 
         ) {
             Row(
-                modifier =  Modifier
-                    .padding(top = 25.dp),
+                modifier = Modifier
+                    .padding(top = 1.dp, end = 10.dp),
                 verticalAlignment = Alignment.Top
+
 
             ) {
                 Column(
@@ -244,31 +336,35 @@ fun Quadrado(navController: NavController) {
                 ) {
                     Image(
                         painter = painterResource(R.drawable.quadradopa),
-                        contentDescription = "Quadrado2",
+                        contentDescription = "Quadrado",
                         modifier = Modifier
-                            .size(100.dp)
+                            .size(120.dp)
                     )
                     Image(
                         painter = painterResource(R.drawable.espa_odecalculo),
-                        contentDescription = "Espaço Calculo")
-                    Text(text = "Área: $area",
-                        fontSize = 17.sp)
+                        contentDescription = "Espaço Calculo"
+                    )
+                    Text(
+                        text = "Área: $area_quadrado",
+                        fontSize = 17.sp
+                    )
                 }
 
-                Column(modifier = Modifier
-                    .padding(start = 60.dp)
-                    .padding(top = 45.dp)
-                    .fillMaxWidth(),
-                    verticalArrangement = Arrangement.Center) {
-                    Text(text = "Valor do Lado:",
+                Column(
+                    modifier = Modifier
+                        .padding(start = 30.dp)
+                        .padding(top = 35.dp),
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        text = "Valor do Lado:",
                         fontSize = 20.sp,
                         color = Color(0xFFFD2B977)
                     )
-
                     OutlinedTextField(
                         value = lado,
-                        onValueChange = {lado = it
-                            area = if (lado.isNotEmpty()) lado.toDouble() * lado.toDouble() else 0.0
+                        onValueChange = {
+                            lado = it
                         },
                         colors = TextFieldDefaults.colors(
                             unfocusedContainerColor = Color(0xFFFD2B977)
@@ -277,15 +373,46 @@ fun Quadrado(navController: NavController) {
                             keyboardType = KeyboardType.Number
                         ),
                         modifier = Modifier
-                            .padding(end = 35.dp)
-                            .fillMaxWidth()
+                            .padding(end = 20.dp)
+                            .fillMaxWidth(),
+                        textStyle = TextStyle(
+                            fontSize = 16.sp,
+                            textAlign = TextAlign.Start
+                        ),
+                        singleLine = true
 
                     )
+                    Button(
+                        onClick = {
+                            area =
+                                if (lado.isNotEmpty()) lado.toDouble() * lado.toDouble() else 0.0
+                        },
+                        shape = RoundedCornerShape(7.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFFFFA62B),
+                            contentColor = Color.White
+                        ),
+                        modifier = Modifier
+                            .padding(top = 15.dp, start = 15.dp)
+                            .height(45.dp)
+                            .width(148.dp)
+                            .fillMaxWidth()
+                            .align(alignment = Alignment.Start)
+                    ) {
+                        Text(
+                            text = "Confirmar",
+                            fontSize = 15.sp,
+                            fontWeight = FontWeight.Medium,
+                            color = Color(0xFFFF16697A)
+                        )
+                    }
 
 
                 }
+
             }
         }
+
     }
 
 }
@@ -295,57 +422,57 @@ fun Retangulo(navController: NavController) {
 
     var raio by remember { mutableStateOf("") }
     var area by remember { mutableStateOf<Double?>(null) }
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .paint(
-                painter = painterResource(
-                    R.drawable.tela_de_fundo
-                ),
-                contentScale = ContentScale.Crop
-
-            )
-    ) {
-        Card(
+    Column {
+        Column(
             modifier = Modifier
-                .padding(5.dp)
-                .padding(top = 17.dp),
-            colors = CardDefaults.cardColors(containerColor = Color(laranja)),
-            elevation = CardDefaults.cardElevation(15.dp)
+                .fillMaxSize()
+                .paint(
+                    painter = painterResource(
+                        R.drawable.tela_de_fundo
+                    ),
+                    contentScale = ContentScale.Crop
 
+                )
         ) {
-            Row(
+            Card(
                 modifier = Modifier
-                    .padding(start = 8.dp)
-                    .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Start
-            ) {
+                    .padding(5.dp)
+                    .padding(top = 17.dp),
+                colors = CardDefaults.cardColors(containerColor = Color(laranja)),
+                elevation = CardDefaults.cardElevation(15.dp)
 
-                IconButton(
+            ) {
+                Row(
                     modifier = Modifier
-                        .size(40.dp),
-                    onClick = { navController.popBackStack() }) {
-                    Icon(
-                        Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "voltar a tela de inicio"
+                        .padding(start = 8.dp)
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Start
+                ) {
+
+                    IconButton(
+                        modifier = Modifier
+                            .size(40.dp),
+                        onClick = { navController.popBackStack() }) {
+                        Icon(
+                            Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "voltar a tela de inicio"
+                        )
+                    }
+                    Spacer(
+                        modifier = Modifier.padding(20.dp)
+                    )
+                    Text(
+                        text = "Área do Retangulo",
+                        fontSize = 23.sp,
+                        modifier = Modifier
+                            .padding(start = 22.dp)
+                            .align(Alignment.CenterVertically)
                     )
                 }
-                Spacer(
-                    modifier = Modifier.padding(20.dp)
-                )
-                Text(
-                    text = "Área do Retangulo",
-                    fontSize = 23.sp,
-                    modifier = Modifier
-                        .padding(start = 22.dp)
-                        .align(Alignment.CenterVertically)
-                )
-            }
 
+            }
         }
-    }
-    Column {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
@@ -355,7 +482,7 @@ fun Retangulo(navController: NavController) {
 
         ) {
             Row(
-                modifier =  Modifier
+                modifier = Modifier
                     .padding(top = 25.dp),
                 verticalAlignment = Alignment.Top
 
@@ -374,25 +501,33 @@ fun Retangulo(navController: NavController) {
                     )
                     Image(
                         painter = painterResource(R.drawable.espa_odecalculo),
-                        contentDescription = "Espaço Calculo")
-                    Text(text = "Área: $area",
-                        fontSize = 17.sp)
+                        contentDescription = "Espaço Calculo"
+                    )
+                    Text(
+                        text = "Área: $area",
+                        fontSize = 17.sp
+                    )
                 }
 
-                Column(modifier = Modifier
-                    .padding(start = 60.dp)
-                    .padding(top = 25.dp)
-                    .fillMaxWidth(),
-                    verticalArrangement = Arrangement.Center) {
-                    Text(text = "Valor da Base:",
+                Column(
+                    modifier = Modifier
+                        .padding(start = 60.dp)
+                        .padding(top = 25.dp)
+                        .fillMaxWidth(),
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        text = "Valor da Base:",
                         fontSize = 20.sp,
                         color = Color(0xFFFD2B977)
                     )
 
                     OutlinedTextField(
                         value = raio,
-                        onValueChange = {raio = it
-                            area = if (raio.isNotEmpty()) Math.PI * raio.toDouble() * raio.toDouble() else 0.0
+                        onValueChange = {
+                            raio = it
+                            area =
+                                if (raio.isNotEmpty()) Math.PI * raio.toDouble() * raio.toDouble() else 0.0
                         },
                         colors = TextFieldDefaults.colors(
                             unfocusedContainerColor = Color(0xFFFD2B977)
@@ -405,17 +540,22 @@ fun Retangulo(navController: NavController) {
                             .fillMaxWidth()
 
                     )
-                    Spacer(modifier = Modifier
-                        .padding(10.dp))
-                    Text(text = "Valor da Altura:",
+                    Spacer(
+                        modifier = Modifier
+                            .padding(10.dp)
+                    )
+                    Text(
+                        text = "Valor da Altura:",
                         fontSize = 20.sp,
                         color = Color(0xFFFD2B977)
                     )
 
                     OutlinedTextField(
                         value = raio,
-                        onValueChange = {raio = it
-                            area = if (raio.isNotEmpty()) Math.PI * raio.toDouble() * raio.toDouble() else 0.0
+                        onValueChange = {
+                            raio = it
+                            area =
+                                if (raio.isNotEmpty()) Math.PI * raio.toDouble() * raio.toDouble() else 0.0
                         },
                         colors = TextFieldDefaults.colors(
                             unfocusedContainerColor = Color(0xFFFD2B977)

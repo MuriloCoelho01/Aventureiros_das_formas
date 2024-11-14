@@ -34,6 +34,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -83,7 +84,7 @@ fun Entrar(navController: NavController) {
             OutlinedTextField(
                 value = email,
                 onValueChange = { newText -> email = newText },
-                label = { Text("nome de usuário / email", fontSize = 16.sp, fontWeight = FontWeight.Medium) },
+                label = { Text("Nome de usuário / Email", fontSize = 16.sp, fontWeight = FontWeight.Medium) },
                 leadingIcon = {
                     Image(
                         painter = painterResource(R.drawable.vector),
@@ -111,6 +112,7 @@ fun Entrar(navController: NavController) {
                 value = senha,
                 onValueChange = { newText -> senha = newText },
                 label = { Text("Senha", fontSize = 16.sp, fontWeight = FontWeight.Medium) },
+                visualTransformation = PasswordVisualTransformation(),
                 leadingIcon = {
                     Image(
                         painter = painterResource(R.drawable.vector1),

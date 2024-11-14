@@ -3,8 +3,10 @@ package com.demoday.aventuras_formasproibida
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,6 +21,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -46,7 +49,9 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.motionEventSpy
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -64,282 +69,340 @@ fun TelaInicio(navController: NavController) {
         modifier = androidx.compose.ui.Modifier
             .paint(
                 painter = painterResource(
-                    R.drawable.fundo_2
+                    R.drawable.tela_de_fundo
                 ),
                 contentScale = ContentScale.Crop
             )
             .fillMaxSize()
-            .padding(top = 185.dp),
 
 
-        ) {
-
-    }
-
-
-    Column(
-        modifier = Modifier
-            .verticalScroll(rememberScrollState(0))
-            .fillMaxHeight()
-            .padding(top = 270.dp)
     ) {
-        Column(
+   Box {
+        Card(
             modifier = Modifier
-                .padding(top = 0.dp)
-                .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+                .fillMaxWidth()
+                .height(260.dp),
+            colors = CardDefaults.cardColors(containerColor = Color(0xFF16697A)),
+            shape = RoundedCornerShape(bottomStart = 20.dp, bottomEnd = 20.dp),
+            elevation = CardDefaults.cardElevation(
+                defaultElevation = 12.dp
+            )
         ) {
-            Button(
+            Column(
                 modifier = Modifier
-                    .width(376.dp)
-                    .height(87.dp),
-                colors = ButtonDefaults
-                    .buttonColors(containerColor = Color(0x45FF16697A)),
-                onClick = { navController.navigate("circulo") }
+                    .fillMaxSize()
             ) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
                 ) {
-                    Image(
+                    IconButton(
                         modifier = Modifier
-                            .size(52.dp),
-                        painter = painterResource(R.drawable.ellipse_2),
-                        contentDescription = ""
-                    )
-                    Text(
-                        modifier = Modifier
-                            .padding(18.dp),
-                        text = "Área do Circulo",
-                        fontSize = 23.sp,
-                        color = Color(laranja),
-                    )
-                }
+                            .size(40.dp),
+                        onClick = { navController.popBackStack() }) {
+                        Icon(
+                            Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "voltar a tela de inicio",
+                        )
+                    }
 
-            }
-        }
-        Column(
-            modifier = Modifier
-                .padding(top = 40.dp)
-                .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Button(
-                modifier = Modifier
-                    .width(376.dp)
-                    .height(87.dp),
-                colors = ButtonDefaults
-                    .buttonColors(containerColor = Color(0x45FF16697A)),
-                onClick = { navController.navigate("quadrado") }
-            ) {
-                Row(
+                }
+                Spacer(
+                    modifier = Modifier
+                        .padding(top = 125.dp)
+                )
+                Column(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .padding(start = 12.dp)
                 ) {
-                    Image(
-                        modifier = Modifier
-                            .size(52.dp),
-                        painter = painterResource(R.drawable.rectangle_15),
-                        contentDescription = ""
-                    )
                     Text(
-                        modifier = Modifier
-                            .padding(18.dp),
-                        text = "Área do Quadrado",
-                        fontSize = 23.sp,
+                        "Bem vindo,",
+                       fontSize = 15.sp,
                         color = Color(laranja),
-                    )
+                        fontWeight = FontWeight.SemiBold,
+                        modifier = Modifier
+                            .padding(start = 20.dp)
+                        )
+                    Text("Desenvolvedor",
+                        fontSize = 40.sp,
+                        color = Color(laranja),
+                        fontWeight = FontWeight.SemiBold,
+                        modifier = Modifier
+                            .padding(start = 45.dp)
+                        )
                 }
-
             }
         }
-        Column(
-            modifier = Modifier
-                .padding(top = 40.dp)
-                .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Button(
-                modifier = Modifier
-                    .width(376.dp)
-                    .height(87.dp),
-                colors = ButtonDefaults
-                    .buttonColors(containerColor = Color(0x45FF16697A)),
-                onClick = { navController.navigate("retangulo") }
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                ) {
-                    Image(
-                        modifier = Modifier
-                            .size(52.dp),
-                        painter = painterResource(R.drawable.rectangle_16),
-                        contentDescription = ""
-                    )
-                    Text(
-                        modifier = Modifier
-                            .padding(18.dp),
-                        text = "Área do Retângulo",
-                        fontSize = 23.sp,
-                        color = Color(laranja),
-                    )
-                }
-
-            }
-        }
-        Column(
-            modifier = Modifier
-                .padding(top = 40.dp)
-                .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Button(
-                modifier = Modifier
-                    .width(376.dp)
-                    .height(87.dp),
-                colors = ButtonDefaults
-                    .buttonColors(containerColor = Color(0x45FF16697A)),
-                onClick = { navController.navigate("triangulo") }
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                ) {
-                    Image(
-                        modifier = Modifier
-                            .size(52.dp),
-                        painter = painterResource(R.drawable.polygon_1),
-                        contentDescription = ""
-                    )
-                    Text(
-                        modifier = Modifier
-                            .padding(18.dp),
-                        text = "Área do Triângulo",
-                        fontSize = 23.sp,
-                        color = Color(laranja),
-                    )
-                }
-
-            }
-        }
-        Column(
-            modifier = Modifier
-                .padding(top = 40.dp)
-                .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Button(
-                modifier = Modifier
-                    .width(376.dp)
-                    .height(87.dp),
-                colors = ButtonDefaults
-                    .buttonColors(containerColor = Color(0x45FF16697A)),
-                onClick = { navController.navigate("losango") }
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                ) {
-                    Image(
-                        modifier = Modifier
-                            .size(52.dp),
-                        painter = painterResource(R.drawable.losango),
-                        contentDescription = ""
-                    )
-                    Text(
-                        modifier = Modifier
-                            .padding(18.dp),
-                        text = "Área do Losango",
-                        fontSize = 23.sp,
-                        color = Color(laranja),
-                    )
-                }
-
-            }
-        }
-        Column(
-            modifier = Modifier
-                .padding(top = 40.dp)
-                .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Button(
-                modifier = Modifier
-                    .width(376.dp)
-                    .height(87.dp),
-                colors = ButtonDefaults
-                    .buttonColors(containerColor = Color(0x45FF16697A)),
-                onClick = { navController.navigate("trapezio") }
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                ) {
-                    Image(
-                        modifier = Modifier
-                            .size(52.dp),
-                        painter = painterResource(R.drawable.trapazeio),
-                        contentDescription = ""
-                    )
-                    Text(
-                        modifier = Modifier
-                            .padding(18.dp),
-                        text = "Área do Trapézio",
-                        fontSize = 23.sp,
-                        color = Color(laranja),
-                    )
-                }
-
-            }
-        }
-        Column(
-            modifier = Modifier
-                .padding(top = 40.dp)
-                .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Button(
-                modifier = Modifier
-                    .width(376.dp)
-                    .height(87.dp),
-                colors = ButtonDefaults
-                    .buttonColors(containerColor = Color(0x45FF16697A)),
-                onClick = { navController.navigate("paralelogramo") }
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    Image(
-                        modifier = Modifier
-                            .size(52.dp),
-                        painter = painterResource(R.drawable.paralelogramo),
-                        contentDescription = ""
-                    )
-                    Text(
-                        modifier = Modifier
-                            .padding(18.dp),
-                        text = "Área do Paralelogramo",
-                        fontSize = 23.sp,
-                        color = Color(laranja),
-                    )
-                }
-
-            }
-        }
-
-
-    }
 }
+
+        Column(
+            modifier = Modifier
+                .verticalScroll(rememberScrollState(0))
+                .fillMaxHeight()
+                .padding(top = 20
+                    .dp)
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(top = 0.dp)
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Button(
+                    modifier = Modifier
+                        .width(376.dp)
+                        .height(87.dp),
+                    colors = ButtonDefaults
+                        .buttonColors(containerColor = Color(0x45FF16697A)),
+                    onClick = { navController.navigate("circulo") }
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ) {
+                        Image(
+                            modifier = Modifier
+                                .size(52.dp),
+                            painter = painterResource(R.drawable.ellipse_2),
+                            contentDescription = ""
+                        )
+                        Text(
+                            modifier = Modifier
+                                .padding(18.dp),
+                            text = "Área do Circulo",
+                            fontSize = 23.sp,
+                            color = Color(laranja),
+                        )
+                    }
+
+                }
+            }
+            Column(
+                modifier = Modifier
+                    .padding(top = 40.dp)
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Button(
+                    modifier = Modifier
+                        .width(376.dp)
+                        .height(87.dp),
+                    colors = ButtonDefaults
+                        .buttonColors(containerColor = Color(0x45FF16697A)),
+                    onClick = { navController.navigate("quadrado") }
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ) {
+                        Image(
+                            modifier = Modifier
+                                .size(52.dp),
+                            painter = painterResource(R.drawable.rectangle_15),
+                            contentDescription = ""
+                        )
+                        Text(
+                            modifier = Modifier
+                                .padding(18.dp),
+                            text = "Área do Quadrado",
+                            fontSize = 23.sp,
+                            color = Color(laranja),
+                        )
+                    }
+
+                }
+            }
+            Column(
+                modifier = Modifier
+                    .padding(top = 40.dp)
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Button(
+                    modifier = Modifier
+                        .width(376.dp)
+                        .height(87.dp),
+                    colors = ButtonDefaults
+                        .buttonColors(containerColor = Color(0x45FF16697A)),
+                    onClick = { navController.navigate("retangulo") }
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ) {
+                        Image(
+                            modifier = Modifier
+                                .size(52.dp),
+                            painter = painterResource(R.drawable.rectangle_16),
+                            contentDescription = ""
+                        )
+                        Text(
+                            modifier = Modifier
+                                .padding(18.dp),
+                            text = "Área do Retângulo",
+                            fontSize = 23.sp,
+                            color = Color(laranja),
+                        )
+                    }
+
+                }
+            }
+            Column(
+                modifier = Modifier
+                    .padding(top = 40.dp)
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Button(
+                    modifier = Modifier
+                        .width(376.dp)
+                        .height(87.dp),
+                    colors = ButtonDefaults
+                        .buttonColors(containerColor = Color(0x45FF16697A)),
+                    onClick = { navController.navigate("triangulo") }
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ) {
+                        Image(
+                            modifier = Modifier
+                                .size(52.dp),
+                            painter = painterResource(R.drawable.polygon_1),
+                            contentDescription = ""
+                        )
+                        Text(
+                            modifier = Modifier
+                                .padding(18.dp),
+                            text = "Área do Triângulo",
+                            fontSize = 23.sp,
+                            color = Color(laranja),
+                        )
+                    }
+
+                }
+            }
+            Column(
+                modifier = Modifier
+                    .padding(top = 40.dp)
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Button(
+                    modifier = Modifier
+                        .width(376.dp)
+                        .height(87.dp),
+                    colors = ButtonDefaults
+                        .buttonColors(containerColor = Color(0x45FF16697A)),
+                    onClick = { navController.navigate("losango") }
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ) {
+                        Image(
+                            modifier = Modifier
+                                .size(52.dp),
+                            painter = painterResource(R.drawable.losango),
+                            contentDescription = ""
+                        )
+                        Text(
+                            modifier = Modifier
+                                .padding(18.dp),
+                            text = "Área do Losango",
+                            fontSize = 23.sp,
+                            color = Color(laranja),
+                        )
+                    }
+
+                }
+            }
+            Column(
+                modifier = Modifier
+                    .padding(top = 40.dp)
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Button(
+                    modifier = Modifier
+                        .width(376.dp)
+                        .height(87.dp),
+                    colors = ButtonDefaults
+                        .buttonColors(containerColor = Color(0x45FF16697A)),
+                    onClick = { navController.navigate("trapezio") }
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ) {
+                        Image(
+                            modifier = Modifier
+                                .size(52.dp),
+                            painter = painterResource(R.drawable.trapazeio),
+                            contentDescription = ""
+                        )
+                        Text(
+                            modifier = Modifier
+                                .padding(18.dp),
+                            text = "Área do Trapézio",
+                            fontSize = 23.sp,
+                            color = Color(laranja),
+                        )
+                    }
+
+                }
+            }
+            Column(
+                modifier = Modifier
+                    .padding(top = 40.dp)
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Button(
+                    modifier = Modifier
+                        .width(376.dp)
+                        .height(87.dp),
+                    colors = ButtonDefaults
+                        .buttonColors(containerColor = Color(0x45FF16697A)),
+                    onClick = { navController.navigate("paralelogramo") }
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Image(
+                            modifier = Modifier
+                                .size(52.dp),
+                            painter = painterResource(R.drawable.paralelogramo),
+                            contentDescription = ""
+                        )
+                        Text(
+                            modifier = Modifier
+                                .padding(18.dp),
+                            text = "Área do Paralelogramo",
+                            fontSize = 23.sp,
+                            color = Color(laranja),
+                        )
+                    }
+
+                }
+            }
+
+
+        }
+    }
+    }
+
+
 
 
 
