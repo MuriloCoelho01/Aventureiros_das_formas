@@ -81,7 +81,7 @@ fun TelaInicio(navController: NavController) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(260.dp),
+                .height(230.dp),
             colors = CardDefaults.cardColors(containerColor = Color(0xFF16697A)),
             shape = RoundedCornerShape(bottomStart = 20.dp, bottomEnd = 20.dp),
             elevation = CardDefaults.cardElevation(
@@ -109,7 +109,7 @@ fun TelaInicio(navController: NavController) {
                 }
                 Spacer(
                     modifier = Modifier
-                        .padding(top = 125.dp)
+                        .padding(top = 115.dp)
                 )
                 Column(
                     modifier = Modifier

@@ -75,6 +75,10 @@ fun Inicio() {
                     composable("circulo") { Circulo(navController) }
                     composable("quadrado") { Quadrado(navController) }
                     composable("retangulo") { Retangulo(navController) }
+                    composable("triangulo") { Triângulo((navController)) }
+                    composable("losango") { Losângo(navController)}
+                    composable("trapezio") { Trapézio(navController)}
+                    composable("paralelogramo") { Paralelogramo(navController) }
 
 
 
