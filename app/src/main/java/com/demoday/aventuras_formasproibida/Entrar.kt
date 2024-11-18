@@ -118,6 +118,7 @@ fun Entrar(navController: NavController) {
                         painter = painterResource(R.drawable.vector1),
                         contentDescription = "Ícone do campo de texto",
                         modifier = Modifier.size(20.dp)
+                            .clickable {  }
                     )
                 },
                 modifier = Modifier
