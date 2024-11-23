@@ -1,80 +1,93 @@
+# **Calculadora de Formas Geométricas**
 
-<h1>Aventuras Formas Proibida</h1>
+## **Descrição**
+Este projeto é uma calculadora de formas geométricas desenvolvida com Jetpack Compose. Ela permite calcular áreas e perímetros de diversas formas geométricas de maneira prática e intuitiva, utilizando uma interface moderna e responsiva.
 
-<p>Este projeto é um aplicativo Android desenvolvido usando Jetpack Compose. Ele apresenta uma interface de login e cadastro de usuários e navegação entre telas, oferecendo um design estilizado com botões e campos de entrada personalizados.</p>
+---
 
-<h2>Estrutura do Projeto</h2>
+## **Funcionalidades**
+A aplicação atualmente suporta o cálculo de áreas e perímetros das seguintes formas geométricas:
 
-<ul>
-    <li><strong>MainActivity:</strong> Classe principal da aplicação, onde o tema e a navegação inicial são configurados.</li>
-    <li><strong>Inicio:</strong> Função composable que define a estrutura inicial do aplicativo e configura o NavHost para navegar entre as telas.</li>
-    <li><strong>Telas:</strong>
-        <ul>
-            <li><strong>Login:</strong> Tela de login com botões de navegação para as telas de "Cadastrar" e "Entrar".</li>
-            <li><strong>Cadastro:</strong> Tela para cadastro de novos usuários, com campos de entrada para nome, e-mail e senha.</li>
-            <li><strong>Entrar:</strong> Tela de entrada do usuário, onde é possível inserir nome de usuário e senha.</li>
-        </ul>
-    </li>
-</ul>
+1. **Círculo**
+   - **Área**: \( A = \pi r^2 \)
+   - **Perímetro**: \( P = 2 \pi r \)
 
-<h2>Funcionalidades</h2>
+2. **Quadrado**
+   - **Área**: \( A = l^2 \)
+   - **Perímetro**: \( P = 4l \)
 
-<ul>
-    <li>Interface de login e cadastro com design personalizado.</li>
-    <li>Campos de entrada estilizados com cores específicas e cantos arredondados.</li>
-    <li>Botões de navegação entre as telas de login, cadastro e entrada.</li>
-</ul>
+3. **Retângulo**
+   - **Área**: \( A = b \times h \)
+   - **Perímetro**: \( P = 2 \times (b + h) \)
 
-<h2>Dependências</h2>
+4. **Triângulo**
+   - **Área** (base e altura): \( A = \frac{b \times h}{2} \)
+   - **Perímetro**: \( P = a + b + c \) (com base nos lados)
 
-<p>O projeto utiliza o <strong>Jetpack Compose</strong> para criação da interface de usuário e <strong>Navigation</strong> para navegação entre as telas.</p>
+5. **Losango**
+   - **Área**: \( A = \frac{D \times d}{2} \)
+   - **Perímetro**: \( P = 4l \) (com base nos lados)
 
-<h2>Cores</h2>
+6. **Trapézio**
+   - **Área**: \( A = \frac{(B + b) \times h}{2} \)
+   - **Perímetro**: Soma dos lados \( a + b + c + d \)
 
-<p>O design do aplicativo utiliza uma paleta de cores personalizadas:</p>
+7. **Paralelogramo**
+   - **Área**: \( A = b \times h \)
+   - **Perímetro**: \( P = 2 \times (b + l) \) (base e lado)
 
-<ul>
-    <li><strong>Cor principal dos botões:</strong> #FFA62B</li>
-    <li><strong>Cor do texto dos botões:</strong> #FFFFFF</li>
-    <li><strong>Cor de fundo dos campos de texto:</strong> #FD2B977</li>
-    <li><strong>Cor de texto do label:</strong> #FFD2B977</li>
-    <li><strong>Cor de texto nos campos:</strong> #000000</li>
-</ul>
+---
 
-<h2>Estrutura do Código</h2>
+## **Tecnologias Utilizadas**
 
-<p>Cada tela foi implementada como uma função composable independente:</p>
+Este projeto foi desenvolvido utilizando tecnologias modernas para garantir uma experiência de usuário fluida e eficiente, além de facilitar a manutenção e expansão do código. Confira as tecnologias principais:
 
-<ol>
-    <li><strong>Login:</strong> Inclui botões para "Login" e "Cadastrar". Cada botão navega para uma tela diferente usando o NavController.</li>
-    <li><strong>Cadastro:</strong> Possui campos de entrada para nome de usuário, e-mail e senha, com um botão "Cadastrar" que leva o usuário à tela de "Entrar".</li>
-    <li><strong>Entrar:</strong> Tela onde o usuário insere suas informações de login (nome de usuário e senha) e navega para a tela inicial.</li>
-</ol>
+### **Jetpack Compose**
+- **Descrição**: Jetpack Compose é o framework moderno da Google para criar interfaces nativas no Android. Ele utiliza uma abordagem declarativa, permitindo que você descreva a interface do usuário como funções Kotlin.
+- **Por que usamos?**  
+  - Simplifica a construção de interfaces dinâmicas e responsivas.
+  - Reduz a necessidade de XML para layouts.
+  - Facilita a reutilização de componentes e a implementação de temas globais.
+  
+### **Kotlin**
+- **Descrição**: Kotlin é a linguagem oficial para o desenvolvimento Android, suportada pelo Google. É conhecida por sua sintaxe moderna, segurança contra nulidade e integração perfeita com Java.
+- **Por que usamos?**  
+  - Sintaxe mais limpa e concisa comparada ao Java.
+  - Recursos como corrotinas para lidar com tarefas assíncronas.
+  - Segurança aprimorada contra `NullPointerExceptions`.
 
-<h2>Pré-visualização</h2>
+### **Android Studio**
+- **Descrição**: IDE oficial para desenvolvimento Android, baseada no IntelliJ IDEA. Oferece ferramentas robustas para design, codificação, depuração e testes de aplicativos Android.
+- **Por que usamos?**  
+  - Suporte completo ao Jetpack Compose e Kotlin.
+  - Ferramentas integradas de pré-visualização de interfaces e emuladores.
+  - Facilidade de integração com ferramentas de versionamento como o Git.
 
-<p>As telas foram configuradas para visualização no Android Studio usando o <strong>@Preview</strong>. Assim, é possível pré-visualizar as telas "Inicio", "Cadastro" e "Entrar".</p>
+### **Material Design**
+- **Descrição**: O Material Design é um conjunto de diretrizes de design desenvolvido pelo Google. Ele define padrões visuais e de interação para criar interfaces consistentes e acessíveis.
+- **Por que usamos?**  
+  - Cria uma interface moderna e intuitiva.
+  - Facilita a personalização de temas e componentes, como botões, campos de texto e cards.
+  - Oferece uma excelente experiência para o usuário, com feedback visual claro.
 
-<h2>Configuração do Projeto</h2>
+### **Gradle**
+- **Descrição**: Sistema de automação de builds usado em projetos Android para gerenciar dependências, configurar variantes de build e gerar APKs ou AABs.
+- **Por que usamos?**  
+  - Permite adicionar dependências externas facilmente.
+  - Facilita a configuração de builds diferentes (debug, release, etc.).
+  - Suporte a scripts Kotlin DSL para maior flexibilidade.
 
-<ol>
-    <li>Clone o repositório do projeto.</li>
-    <li>Abra o projeto no Android Studio.</li>
-    <li>Compile e execute o aplicativo em um emulador ou dispositivo Android.</li>
-</ol>
+### **Git**
+- **Descrição**: Sistema de controle de versão distribuído, amplamente utilizado por desenvolvedores para gerenciar mudanças no código-fonte e colaborar em equipe.
+- **Por que usamos?**  
+  - Rastreia todas as alterações feitas no projeto.
+  - Facilita o trabalho colaborativo.
+  - Permite versionamento claro e reversão de mudanças, quando necessário.
 
-<h2>Imagens e Recursos</h2>
+---
 
-<ul>
-    <li><strong>R.drawable.tela_de_fundo:</strong> Imagem de fundo usada em todas as telas.</li>
-    <li><strong>R.drawable.ativo_2_1:</strong> Logotipo exibido na tela de login.</li>
-    <li><strong>R.drawable.nomeapp:</strong> Imagem do nome do aplicativo exibida na tela de cadastro.</li>
-</ul>
+## **Como Executar o Projeto**
 
-<h2>Licença</h2>
-
-<p>Este projeto está sob a licença MIT. Consulte o arquivo LICENSE para obter mais informações.</p>
-
-</body>
-</html>
-
+1. Clone o repositório para sua máquina local:
+   ```bash
+   git clone https://github.com/seu-usuario/seu-repositorio.git
