@@ -1,5 +1,5 @@
 
-<img src="mockup_forma.png" alt="Mockup do projeto">
+<img src="forma_logo.png" alt="Mockup do projeto">
 
 # **Calculadora de Formas Geométricas** 📐
 
