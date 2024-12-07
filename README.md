@@ -35,6 +35,9 @@ A aplicação atualmente suporta o cálculo de áreas e perímetros das seguinte
 7. **Paralelogramo**
    - **Área**: \( A = b \times h \)
    - **Perímetro**: \( P = 2 \times (b + l) \) (base e lado)
+---
+
+<img src="forma_mockup.png" alt="Mockup do projeto">
 
 ---
 
