@@ -1,4 +1,4 @@
-# **Calculadora de Formas Geométricas**
+# **Calculadora de Formas Geométricas** 📐➕➖➗🟰
 
 ## **Descrição**
 Este projeto é uma calculadora de formas geométricas desenvolvida com Jetpack Compose. Ela permite calcular áreas e perímetros de diversas formas geométricas de maneira prática e intuitiva, utilizando uma interface moderna e responsiva.
@@ -37,7 +37,7 @@ A aplicação atualmente suporta o cálculo de áreas e perímetros das seguinte
    - **Perímetro**: \( P = 2 \times (b + l) \) (base e lado)
 ---
 
-<img src="forma_mockup.png" alt="Mockup do projeto">
+<img src="mockup_forma.png" alt="Mockup do projeto">
 
 ---
 
