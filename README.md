@@ -9,7 +9,7 @@ Este projeto é uma calculadora de formas geométricas desenvolvida com Jetpack 
 
 ---
 
-## **Funcionalidades**
+## 💥 **Funcionalidades**
 A aplicação atualmente suporta o cálculo de áreas e perímetros das seguintes formas geométricas:
 
 1. **Círculo**
@@ -45,7 +45,7 @@ A aplicação atualmente suporta o cálculo de áreas e perímetros das seguinte
 
 ---
 
-## **Tecnologias Utilizadas**
+## 🧑🏾‍💻 **Tecnologias Utilizadas**
 
 Este projeto foi desenvolvido utilizando tecnologias modernas para garantir uma experiência de usuário fluida e eficiente, além de facilitar a manutenção e expansão do código. Confira as tecnologias principais:
 
